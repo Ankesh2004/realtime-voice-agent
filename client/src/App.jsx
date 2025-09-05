@@ -122,15 +122,17 @@ function App() {
   };
   
   // Cleanup realtime session on component unmount
+  const disconectSession = ()=>{
+    if (voiceSessionRef.current) {
+      console.log("Cleanup: Component is unmounting. Closing session.");
+      voiceSessionRef.current.close();
+      setIsConnected(false);
+      setStatus('Disconnected');
+    }
+  }
   useEffect(() => {
-    return () => {
-      if (voiceSessionRef.current) {
-        console.log("Cleanup: Component is unmounting. Closing session.");
-        voiceSessionRef.current.close();
-      }
-    };
+    disconectSession();
   }, []);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -167,6 +169,7 @@ function App() {
         <button onClick={handleConnect} disabled={isConnecting || isConnected}>
           { isConnected ? 'Connected' : isConnecting ? 'Connecting...' : 'Start Session'}
         </button>
+        { isConnected && <button onClick={disconectSession}>Disconnect</button>}
       </header>
     </div>
   );
