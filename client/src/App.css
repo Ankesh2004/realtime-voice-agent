@@ -32,6 +32,7 @@ button:hover {
 button:disabled {
   background-color: #555;
   cursor: not-allowed;
+  color: #888;
 }
 
 .status-bar {
@@ -41,6 +42,7 @@ button:disabled {
   background-color: #444;
   padding: 5px 15px;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .status-indicator {
@@ -52,6 +54,59 @@ button:disabled {
 
 .status-indicator.connected {
   background-color: #52b788; /* Green when connected */
+}
+
+/* Styles for new input fields */
+.session-config {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+input[type="text"],
+textarea {
+  background-color: #333842;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #61dafb;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+input[type="text"]:disabled,
+textarea:disabled {
+  background-color: #20232a;
+  cursor: not-allowed;
+  color: #888;
+  border-color: #444;
 }
 
 .transcript-container {
